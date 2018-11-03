@@ -1,4 +1,6 @@
 #lang pie
+
+;; Basic Stuff
 (claim one Nat)
 (define one
   (add1 zero))
@@ -7,6 +9,7 @@
 (define adam
   (vec:: 'adam vecnil))
 
+;; First and Rest
 (claim first
   (Pi ((E U)
        (l Nat))
@@ -27,24 +30,20 @@
     (λ (es)
       (tail es))))
 
+(check-same Atom 'adam (first Atom 0 adam))
+(check-same (Vec Atom 0) vecnil (rest Atom 0 adam))
+
 (claim normal-atom Atom)
 (define normal-atom 'ukulele)
 (claim abnormal-atom Atom)
 (define abnormal-atom (quote ukulele))
 (check-same Atom normal-atom abnormal-atom)
 
-;; (define peas
-;;  (λ (how-many-peas)
-;;    (rec-Nat how-many-peas
-;;      vecnil
-
-(first Atom 0 adam)
-
-(rest Atom 0 adam)
-
+;; ???
 (claim gauss
   (-> Nat Nat))
 
+;; Addition
 (claim + (-> Nat Nat
            Nat))
 (define + (λ (n m) (rec-Nat n
